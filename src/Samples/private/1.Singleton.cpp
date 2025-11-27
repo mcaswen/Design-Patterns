@@ -1,6 +1,6 @@
 #include "1.Singleton.h"
 
-SingletonBeforeCpp11* SingletonBeforeCpp11::_instance = new SingletonBeforeCpp11(); // 定义或初始化是允许的，私有属性只限制读写/访问
+SingletonBeforeCpp11* SingletonBeforeCpp11::_instance = nullptr; // 定义或初始化是允许的，私有属性只限制读写/访问
 std::mutex SingletonBeforeCpp11::_mutex;
 std::once_flag SingletonBeforeCpp11::_onceFlag;
 

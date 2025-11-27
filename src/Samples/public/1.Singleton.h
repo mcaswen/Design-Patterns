@@ -48,13 +48,14 @@ class SingletonBeforeCpp11
             return _instance;
         }
 
-        static SingletonBeforeCpp11* GetInstance()
+        static SingletonBeforeCpp11* GetInstance2()
         {
             // 从语义上保证只会初始化一次
             std::call_once(_onceFlag, InitInstance);
+            return _instance;
         }
 
-        void InitInstance()
+        static void InitInstance()
         {
             _instance = new SingletonBeforeCpp11();
         }
@@ -76,8 +77,8 @@ class SingletonBeforeCpp11
         SingletonBeforeCpp11() {}
         ~SingletonBeforeCpp11() {}
             
-        SingletonBeforeCpp11(const SingletonBeforeCpp11&) {}
-        SingletonBeforeCpp11& operator=(const SingletonBeforeCpp11&) {}
+        SingletonBeforeCpp11(const SingletonBeforeCpp11&) = delete;
+        SingletonBeforeCpp11& operator=(const SingletonBeforeCpp11&) = delete;
         
         // static SingletonBeforeCpp11 _instance = nullptr; // 无法初始化
 
