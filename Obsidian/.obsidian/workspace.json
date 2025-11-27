@@ -6,7 +6,6 @@
       {
         "id": "97d58281d8d19d70",
         "type": "tabs",
-        "dimension": 70.58823529411765,
         "children": [
           {
             "id": "d8b29e14b00046f5",
@@ -14,37 +13,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "游戏优化与设计模式/02 单例模式.md",
+                "file": "游戏优化与设计模式/03 组合模式.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02 单例模式"
+              "title": "03 组合模式"
             }
           },
           {
             "id": "2220a92ea9ed2699",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "游戏优化与设计模式/01 UML基础.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "01 UML基础"
-            }
-          }
-        ]
-      },
-      {
-        "id": "0a775e1933500794",
-        "type": "tabs",
-        "dimension": 29.411764705882355,
-        "children": [
-          {
-            "id": "745c894839069b15",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -221,10 +199,15 @@
   },
   "active": "d8b29e14b00046f5",
   "lastOpenFiles": [
-    "Images/单例模式UML.png",
+    "Images/组合模式例.png",
+    "Images/Pasted image 20251127091847.png",
     "Images/对象间关系.png",
+    "Images/组合模式UML.png",
+    "Images/单例模式UML.png",
     "游戏优化与设计模式/01 UML基础.md",
+    "游戏优化与设计模式/03 组合模式.md",
     "游戏优化与设计模式/02 单例模式.md",
+    "Pasted image 20251127091847.png",
     "Obsidian",
     "未命名文件夹",
     "Images",

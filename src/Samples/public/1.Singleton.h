@@ -11,12 +11,7 @@ class Singleton
         Singleton(Singleton&&) = delete;
         Singleton& operator=(Singleton&&) = delete;
 
-        Singleton& GetInstance()
-        {
-            static Singleton instance; // C++11之后才支持并推荐的单例模式
-
-            return instance;
-        }
+        Singleton& GetInstance();
 
     private:
         // 私有构造函数
@@ -33,38 +28,10 @@ class SingletonBeforeCpp11
         // SingletonBeforeCpp11(const SingletonBeforeCpp11&) = delete;
         // SingletonBeforeCpp11& operator=(const SingletonBeforeCpp11&) = delete;
 
-        static SingletonBeforeCpp11* GetInstance()
-        {
-            // 用到的时候再创建（懒加载）
-            // 但是多线程不安全
-            // 加一把锁，一次只允许一个线程通过，
-            std::lock_guard<std::mutex> lock(_mutex);
-
-            if (!_instance)
-            {
-                _instance = new SingletonBeforeCpp11();
-            }
-
-            return _instance;
-        }
-
-        static SingletonBeforeCpp11* GetInstance2()
-        {
-            // 从语义上保证只会初始化一次
-            std::call_once(_onceFlag, InitInstance);
-            return _instance;
-        }
-
-        static void InitInstance()
-        {
-            _instance = new SingletonBeforeCpp11();
-        }
-
-        static void Destroy()
-        {
-            delete _instance;
-            _instance = nullptr;
-        }
+        static SingletonBeforeCpp11* GetInstance();
+        static SingletonBeforeCpp11* GetInstance2();
+        static void InitInstance();
+        static void Destroy();
 
     private:
         static std::mutex _mutex;
@@ -87,36 +54,8 @@ class SingletonBeforeCpp11
 class SingletonDoubleChecked 
 {
     public:
-        static SingletonDoubleChecked* GetInstance() 
-        {
-            // 第一次检查：避免每次调用都加锁
-            if (_instance == nullptr) 
-            {
-                // 加锁确保线程安全
-                pthread_mutex_lock(&_mutex);
-                
-                // 第二次检查：防止多个线程同时通过第一次检查
-                if (_instance == nullptr) {
-                    _instance = new SingletonDoubleChecked();
-                }
-                
-                pthread_mutex_unlock(&_mutex);
-            }
-            return _instance;
-        }
-
-        // 手动清理资源
-        static void Destroy() {
-            pthread_mutex_lock(&_mutex);
-            
-            if (_instance != nullptr) {
-                delete _instance;
-                _instance = nullptr;
-            }
-            
-            pthread_mutex_unlock(&_mutex);
-            pthread_mutex_destroy(&_mutex);
-        }
+        static SingletonDoubleChecked* GetInstance();
+        static void Destroy();
 
     private:
         static SingletonDoubleChecked* _instance;
